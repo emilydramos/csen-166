@@ -3,10 +3,13 @@
 ```python
 import math
 squares = [1, 4, 9, 16, 25]
-items = {headphones: 100, soap: 5, shirt: 15}
+inventory = {headphones: 100, soap: 5, shirt: 15}
 
 for i in range(5):
   print(i)
+class Item{
+  price = 0
+}
 ```
 
 **Part 2**
@@ -93,6 +96,7 @@ input 1:
  text=["80s upbeat synth track"],
 ```
 output: 5 second 80s upbeat synth track
+
 input 2:
 ```python
  text=["calm and soothing piano for studying"],
@@ -109,3 +113,12 @@ output: 5 second d&b track, no visible melody
 
 
 **Part 3**
+
+
+**Part 4: Google Colab**
+
+Tested the models in pt. 2 in Google Colab. 
+
+
+**Part 5: Reflection ** 
+
