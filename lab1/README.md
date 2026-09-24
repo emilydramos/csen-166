@@ -12,12 +12,19 @@ for i in range(5):
 **Part 2**
 
 Model #1
-
 Link: https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF
 
-Model #2: Transformers
+input 1:
 
-Link: https://github.com/huggingface/transformers
+input 2:
+
+input 3: 
+
+Model #2: Qwen3.5-0.8B
+
+Link: https://huggingface.co/Qwen/Qwen3.5-0.8B#qwen35-08b
+
+description: This model can handle text, images, videos, etc.
 
 Code to execute:
 
@@ -43,6 +50,7 @@ input 1:
 
 output: The best way to live a good life is 12 hours a day, 7 days a week, and it is not possible to live a
 
+
 input 2:
 
 ```python
@@ -50,6 +58,7 @@ print(pipe("The capital of California is ", max_new_tokens=20)[0]["generated_tex
 ```
 
 output: The capital of California is 1.5 miles from the Los Angeles area and 1.5 miles from the San Diego area
+
 
 input 3 (I set the max tokens here to 50)
 
@@ -60,14 +69,43 @@ print(pipe("Once upon a time, in a land far, far away, ", max_new_tokens=50)[0][
 output: Once upon a time, in a land far, far away, 1500 miles from your home, there lived a wise old man named Mr. Wisdom. He was known for his wisdom, but he was also very much into the world. One day, he decided to meet with a group of friends to
 
 
-Model #3:
+Model #3: MusicGen
+Link: https://huggingface.co/docs/transformers/v5.17.0/en/model_doc/musicgen#musicgen
+description: This model can generate audio samples (based on text prompts as well). 
 
 Code to execute:
 ```python
-from IPython.display import Audio
+from transformers import AutoProcessor, MusicgenForConditionalGeneration
 
+processor = AutoProcessor.from_pretrained("facebook/musicgen-small")
+model = MusicgenForConditionalGeneration.from_pretrained("facebook/musicgen-small", device_map="auto")
 
-sampling_rate = model.config.audio_encoder.sampling_rate
-Audio(audio_values[0].numpy(), rate=sampling_rate)
+inputs = processor(
+    text=["[INPUT HERE]"],
+    padding=True,
+    return_tensors="pt",
+)
+audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256)
 ```
+
+input 1:
+```python
+ text=["80s upbeat synth track"],
+```
+output: 5 second 80s upbeat synth track
+input 2:
+```python
+ text=["calm and soothing piano for studying"],
+```
+output: 5 second calm piano track
+
+input 3:
+```python
+ text=["drum and bass track"],
+```
+
+output: 5 second d&b track, no visible melody 
+
+
+
 **Part 3**
