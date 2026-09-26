@@ -8,7 +8,9 @@ inventory = {headphones: 100, soap: 5, shirt: 15}
 for i in range(5):
   print(i)
 class Item{
-  price = 0
+  def __init__(self, name; str, price: float = 0.0)
+  self.name = name
+  price = price
 }
 ```
 
