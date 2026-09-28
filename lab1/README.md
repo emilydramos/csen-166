@@ -90,7 +90,9 @@ inputs = processor(
     padding=True,
     return_tensors="pt",
 )
-audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256)
+audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256) # guidance scale = how closely the generated clip will pertain to the prompt
+
+
 ```
 
 input 1:
