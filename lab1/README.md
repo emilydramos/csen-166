@@ -1,4 +1,4 @@
-**Part 1**
+**Part 1 - Basic Python**
 
 ```python
 import math
@@ -14,12 +14,12 @@ class Item{
 }
 ```
 
-**Part 2**
+**Part 2 - Testing Models**
 
 Model #1
 Link: https://huggingface.co/Salesforce/blip-image-captioning-large
 
-description: This model can perform a variety of vision-language tasks. 
+description: This model can perform a variety of vision-language tasks. It can be used for both conditional (user prompt)/unconditional (without user prompt) image captioning.
 
 code to execute: 
 
@@ -32,7 +32,7 @@ from transformers import BlipProcessor, BlipForConditionalGeneration
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large", torch_dtype=torch.float16).to("cuda")
 
-img_url = '[IMAGE URL]' 
+img_url = '[IMAGE URL HERE]' 
 raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
 
 # conditional image captioning
@@ -44,7 +44,7 @@ print(processor.decode(out[0], skip_special_tokens=True))
 
 ```
 
-input 1: 
+input 1: https://unsplash.com/photos/three-iced-drinks-on-wooden-table-pJxT7UgdvkI
 
 output: a photography of two people holding cups of drinks on a table
 
@@ -143,7 +143,7 @@ output: 5 second d&b track, no visible melody
 
 
 
-**Part 3**
+**Part 3 - WAVE**
 
 
 **Part 4: Google Colab**
