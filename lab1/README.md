@@ -36,7 +36,7 @@ img_url = '[IMAGE URL HERE]'
 raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
 
 # conditional image captioning
-text = "a photography of"
+text = "a photo of"
 inputs = processor(raw_image, text, return_tensors="pt").to("cuda", torch.float16)
 
 out = model.generate(**inputs)
@@ -46,11 +46,15 @@ print(processor.decode(out[0], skip_special_tokens=True))
 
 input 1: https://unsplash.com/photos/three-iced-drinks-on-wooden-table-pJxT7UgdvkI
 
-output: a photography of two people holding cups of drinks on a table
+output: a photo of two people holding cups of drinks on a table
 
-input 2:
+input 2: https://images.unsplash.com/photo-1790207504527-0dd91be5d7f5?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 
-input 3: 
+output: a photo of a carnival with a ferris wheel and people walking around
+
+input 3: https://plus.unsplash.com/premium_vector-1788874552998-c2c07a58791f?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
+output: a photo of a pixel style picture of two rings on a blue background
 
 Model #2: Qwen3.5-0.8B
 
@@ -140,7 +144,6 @@ input 3:
 ```
 
 output: 5 second d&b track, no visible melody 
-
 
 
 **Part 3 - WAVE**
