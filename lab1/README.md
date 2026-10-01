@@ -114,6 +114,8 @@ print(pipe("Once upon a time, in a land far, far away, ", max_new_tokens=50)[0][
 output: Once upon a time, in a land far, far away, 1500 miles from your home, there lived a wise old man named Mr. Wisdom. He was known for his wisdom, but he was also very much into the world. One day, he decided to meet with a group of friends to
 
 
+observations: Instead of ending a sentence at a natural point, the model would sometimes cut off in the middle of the sentence. It seems to want to reach the token limit. 
+
 Model #3: MusicGen
 Link: https://huggingface.co/docs/transformers/v5.17.0/en/model_doc/musicgen#musicgen
 description: This model can generate audio samples (based on text prompts as well). 
@@ -161,6 +163,8 @@ input 3:
 
 output: 5 second d&b track, no visible melody 
 note: I also tried the same prompt with tokens = 500, which changed the output to about 7 seconds instead of 5. 
+
+observation: The model worked well with a variety of different genre inputs. It was slow to run on Colab. 
 
 **Part 3 - WAVE**
 
