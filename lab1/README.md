@@ -175,6 +175,8 @@ print(cart_price)
 
 evidence:
 
+<img width="804" height="378" alt="Wave job" src="https://github.com/user-attachments/assets/80827dc3-cb96-4d5b-afd8-7edc5a83ccec" />
+
 
 process to run:
 1. Open https://scu-ood.wave.scu.edu/pun/sys/dashboard
