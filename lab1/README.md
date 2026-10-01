@@ -69,7 +69,7 @@ Model #2: Qwen3.5-0.8B
 
 Link: https://huggingface.co/Qwen/Qwen3.5-0.8B#qwen35-08b
 
-description: This model can handle text, images, videos, etc.
+description: This model can handle text, images, videos, etc and is meant for small, low-power tasks. In this case, we are using it for autocompletion/text generation. 
 
 Code to execute:
 
@@ -80,7 +80,7 @@ from transformers import pipeline
 
 pipe = pipeline( 
     task="text-generation",
-    model="Qwen/Qwen3.5-0.8B",
+    model="Qwen/Qwen3.5-0.8B", 
     device_map="auto",
 )
 print(pipe("[INPUT HERE], ", max_new_tokens=20)[0]["generated_text"])
@@ -174,8 +174,6 @@ print(cart_price)
 ```
 
 evidence:
-<img width="869" height="393" alt="image" src="https://github.com/user-attachments/assets/d1bfb832-802a-4700-9e15-a968ae1fcd2f" />
-<img width="833" height="320" alt="image" src="https://github.com/user-attachments/assets/a79069f2-ae34-4e3a-a334-6347477aa0ee" />
 
 
 process to run:
