@@ -130,7 +130,7 @@ inputs = processor(
     padding=True,
     return_tensors="pt", # returns tensors
 )
-audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256) # guidance scale is how closely the generated clip will pertain to the prompt
+audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256) # guidance scale determines how closely the generated clip will pertain to the prompt
 
 
 ```
@@ -160,7 +160,7 @@ input 3:
 ```
 
 output: 5 second d&b track, no visible melody 
-
+note: I also tried the same prompt with tokens = 500, which changed the output to about 7 seconds instead of 5. 
 
 **Part 3 - WAVE**
 
@@ -184,7 +184,7 @@ process to run:
 3. Select appropriate amount of resources and version of Python
 4. Job will be queued and when it's ready to connect, there will be a button in Jupyter Notebook. 
 
-Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13
+Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13 (no GPUs). 
 
 **Part 4: Google Colab**
 
@@ -194,3 +194,4 @@ Tested the models in pt. 2 in Google Colab.
 
 **Part 5: Reflection ** 
 
+I found Google Colab an intuitive, simple way to test models that were not as resource-intensive. Although it will not be feasible for larger datasets and models, it is more available. The technical challenges I expect to have are with WAVE, and being able to remember what to put in the batch script, remembering to deallocate resources when finished, etc. I think all the resources we've covered in this lab will be useful for the team project, whether they will be used as the first way of testing or as a backup plan. 
