@@ -3,15 +3,24 @@
 ```python
 import math
 squares = [1, 4, 9, 16, 25]
-inventory = {headphones: 100, soap: 5, shirt: 15}
+name = "Kyle"
+
 
 for i in range(5):
   print(i)
-class Item{
-  def __init__(self, name; str, price: float = 0.0)
-  self.name = name
-  price = price
-}
+
+inventory = {"headphones": 100, "soap": 5, "shirt": 15}
+for key, value in inventory.items():
+    print(f"Key: {key}, Value: {value}")
+
+class Item:
+  def __init__(self, name: str, price: float = 0.0):
+    self.name = name
+    self.price = price
+
+  
+item1 = Item(name="ball", price=15)
+print(item1.name)
 ```
 
 **Part 2 - Testing Models**
@@ -29,18 +38,18 @@ import requests
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
 
-processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
+processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large") 
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large", torch_dtype=torch.float16).to("cuda")
 
 img_url = '[IMAGE URL HERE]' 
-raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
+raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB') # convert to rgb format for processor
 
 # conditional image captioning
 text = "a photo of"
-inputs = processor(raw_image, text, return_tensors="pt").to("cuda", torch.float16)
+inputs = processor(raw_image, text, return_tensors="pt").to("cuda", torch.float16) 
 
 out = model.generate(**inputs)
-print(processor.decode(out[0], skip_special_tokens=True))
+print(processor.decode(out[0], skip_special_tokens=True)) # strips out formatting markers
 
 ```
 
@@ -69,7 +78,7 @@ Code to execute:
 import torch
 from transformers import pipeline
 
-pipe = pipeline(
+pipe = pipeline( 
     task="text-generation",
     model="Qwen/Qwen3.5-0.8B",
     device_map="auto",
@@ -111,21 +120,28 @@ description: This model can generate audio samples (based on text prompts as wel
 
 Code to execute:
 ```python
-from transformers import AutoProcessor, MusicgenForConditionalGeneration
+from transformers import AutoProcessor, MusicgenForConditionalGeneration 
 
 processor = AutoProcessor.from_pretrained("facebook/musicgen-small")
-model = MusicgenForConditionalGeneration.from_pretrained("facebook/musicgen-small", device_map="auto")
+model = MusicgenForConditionalGeneration.from_pretrained("facebook/musicgen-small", device_map="auto") #selects model type, automatically allocates model weights based on available memory
 
 inputs = processor(
     text=["[INPUT HERE]"],
     padding=True,
-    return_tensors="pt",
+    return_tensors="pt", # returns tensors
 )
-audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256) # guidance scale = how closely the generated clip will pertain to the prompt
+audio_values = model.generate(**inputs, do_sample=True, guidance_scale=3, max_new_tokens=256) # guidance scale is how closely the generated clip will pertain to the prompt
 
 
 ```
 
+to listen to the output:
+```python
+from IPython.display import Audio # need to import library 
+
+sampling_rate = model.config.audio_encoder.sampling_rate
+Audio(audio_values[0].numpy(), rate=sampling_rate)
+```
 input 1:
 ```python
  text=["80s upbeat synth track"],
@@ -154,23 +170,26 @@ job to test:
 for i in range(6):
   cart_price += 4
 
-sleep(15)
 print(cart_price)
 ```
 
 evidence:
+<img width="869" height="393" alt="image" src="https://github.com/user-attachments/assets/d1bfb832-802a-4700-9e15-a968ae1fcd2f" />
+<img width="833" height="320" alt="image" src="https://github.com/user-attachments/assets/a79069f2-ae34-4e3a-a334-6347477aa0ee" />
 
 
 process to run:
 1. Open https://scu-ood.wave.scu.edu/pun/sys/dashboard
 2. Under Interactive Apps, click Launch JupyterLab
 3. Select appropriate amount of resources and version of Python
+4. Job will be queued and when it's ready to connect, there will be a button in Jupyter Notebook. 
 
-
+Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13
 
 **Part 4: Google Colab**
 
 Tested the models in pt. 2 in Google Colab. 
+
 
 
 **Part 5: Reflection ** 
