@@ -152,11 +152,19 @@ job to test:
 ```python
  cart_price = 0
 for i in range(6):
-  cart_price += 4z
+  cart_price += 4
 
 sleep(15)
 print(cart_price)
 ```
+
+evidence:
+
+
+process to run:
+1. Open https://scu-ood.wave.scu.edu/pun/sys/dashboard
+2. Under Interactive Apps, click Launch JupyterLab
+3. Select appropriate amount of resources and version of Python
 
 
 
