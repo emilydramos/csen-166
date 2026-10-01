@@ -148,6 +148,17 @@ output: 5 second d&b track, no visible melody
 
 **Part 3 - WAVE**
 
+job to test:
+```python
+ cart_price = 0
+for i in range(6):
+  cart_price += 4z
+
+sleep(15)
+print(cart_price)
+```
+
+
 
 **Part 4: Google Colab**
 
