@@ -190,6 +190,28 @@ Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13 (no GPUs).
 
 Tested the models in pt. 2 in Google Colab. 
 
+```python
+
+import torch
+import requests
+from PIL import Image
+from transformers import BlipProcessor, BlipForConditionalGeneration
+
+processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
+model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large", torch_dtype=torch.float16).to("cuda")
+
+img_url = 'https://plus.unsplash.com/premium_vector-1788874552998-c2c07a58791f?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+raw_image = Image.open(requests.get(img_url, stream=True).raw).convert('RGB')
+
+# conditional image captioning
+text = "a photo of"
+inputs = processor(raw_image, text, return_tensors="pt").to("cuda", torch.float16)
+
+out = model.generate(**inputs)
+print(processor.decode(out[0], skip_special_tokens=True))
+```
+
+Resources used: 6.1 GB of system RAM, 1.0 of GPU RAM, 44.2 GB on Disk.
 
 
 **Part 5: Reflection ** 
