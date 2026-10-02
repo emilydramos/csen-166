@@ -192,7 +192,7 @@ Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13 (no GPUs).
 
 **Part 4: Google Colab**
 
-Tested the models in pt. 2 in Google Colab. 
+Tested all of the models in pt. 2 in Google Colab. 
 
 ```python
 
@@ -217,6 +217,9 @@ print(processor.decode(out[0], skip_special_tokens=True))
 
 Resources used: 6.1 GB of system RAM, 1.0 of GPU RAM, 44.2 GB on Disk.
 
+evidence:
+
+<img width="1311" height="419" alt="Screenshot 2026-10-01 at 7 12 23 PM" src="https://github.com/user-attachments/assets/4ad8e65e-47f5-4c52-9654-27028a6fe1ae" />
 
 **Part 5: Reflection ** 
 
