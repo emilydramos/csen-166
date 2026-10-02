@@ -114,7 +114,7 @@ print(pipe("Once upon a time, in a land far, far away, ", max_new_tokens=50)[0][
 output: Once upon a time, in a land far, far away, 1500 miles from your home, there lived a wise old man named Mr. Wisdom. He was known for his wisdom, but he was also very much into the world. One day, he decided to meet with a group of friends to
 
 
-observations: Instead of ending a sentence at a natural point, the model would sometimes cut off in the middle of the sentence. It seems to want to reach the token limit. 
+observations: Instead of ending a sentence at a natural point, the model would sometimes cut off in the middle of the sentence. It seems to want to reach the max token limit automatically. It also phrases sentences somewhat weirdly. 
 
 Model #3: MusicGen
 Link: https://huggingface.co/docs/transformers/v5.17.0/en/model_doc/musicgen#musicgen
@@ -144,6 +144,7 @@ from IPython.display import Audio # need to import library
 sampling_rate = model.config.audio_encoder.sampling_rate
 Audio(audio_values[0].numpy(), rate=sampling_rate)
 ```
+
 input 1:
 ```python
  text=["80s upbeat synth track"],
@@ -164,7 +165,7 @@ input 3:
 output: 5 second d&b track, no visible melody 
 note: I also tried the same prompt with tokens = 500, which changed the output to about 7 seconds instead of 5. 
 
-observation: The model worked well with a variety of different genre inputs. It was slow to run on Colab. 
+observation: The model worked well with a variety of different genre inputs. It was slow to run on Google Colab for just a few seconds of output. 
 
 **Part 3 - WAVE**
 
@@ -192,7 +193,9 @@ Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13 (no GPUs).
 
 **Part 4: Google Colab**
 
-Tested all of the models in pt. 2 in Google Colab. 
+I tested all of the models in pt. 2 in Google Colab. 
+
+Process: I imported the libraries at the top, and then down below, put any code necessary for the model to execute. I was able to fit it in a single cell.
 
 ```python
 
