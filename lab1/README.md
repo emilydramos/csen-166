@@ -193,7 +193,7 @@ Resources used: 1 CPU, 8 GB, 3 hours with Python version 3.13 (no GPUs).
 
 **Part 4: Google Colab**
 
-I tested all of the models in pt. 2 in Google Colab. 
+I tested all of the models in pt. 2 in Google Colab. Below is just one example. 
 
 Process: I imported the libraries at the top, and then down below, put any code necessary for the model to execute. I was able to fit it in a single cell.
 
